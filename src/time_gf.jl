@@ -183,7 +183,7 @@ function getindex(G::TimeGF, component::Symbol)
   elseif component == :lesser
     return G[forward_branch, backward_branch]
   elseif component == :matsubara
-    real(-im .* G[imaginary_branch, imaginary_branch][:,1])
+    -im .* G[imaginary_branch, imaginary_branch][:,1]
   elseif component == :retarded
     ret = G[:greater] - G[:lesser]
     θ = LowerTriangular(ones(size(ret)...))
